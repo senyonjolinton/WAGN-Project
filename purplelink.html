@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Purplelink – London, Birmingham, Manchester</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#F8F5FD;--surface:#fff;--ink:#1B0A33;--muted:#5E5275;--violet:#6A2BD9;--deep:#2A0F52;--lilac:#D9C9F7;--ticket:#FFC83D;--line:#E3D9F4;--gap:#F8F5FD;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150A26;--surface:#201036;--ink:#F3ECFF;--muted:#B5A5D1;--violet:#A580F5;--deep:#0E0619;--lilac:#3A2263;--line:#35205A;--gap:#150A26;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#150A26;--surface:#201036;--ink:#F3ECFF;--muted:#B5A5D1;--violet:#A580F5;--deep:#0E0619;--lilac:#3A2263;--line:#35205A;--gap:#150A26;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ticket);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 24px "Bricolage Grotesque",sans-serif;letter-spacing:-.03em}
+.logo svg{width:44px;height:33px}
+nav{display:flex;gap:22px;font-weight:500;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+@media(max-width:640px){nav a:nth-child(n+3){display:none}}
+.hero{background:var(--deep);color:#fff;position:relative;overflow:hidden;padding:72px 0 120px}
+.hero h1{font-size:clamp(42px,8vw,84px);font-weight:800;max-width:11ch}
+.hero p{max-width:46ch;color:#D9C9F7;font-size:19px;margin:20px 0 0}
+.rails{position:absolute;right:-40px;bottom:36px;width:min(70%,640px);opacity:.9}
+.planner{margin:-64px auto 0;position:relative;z-index:2;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(42,15,82,.18)}
+.fields{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end}
+@media(max-width:720px){.fields{grid-template-columns:1fr}}
+label{display:grid;gap:6px;font-weight:600;font-size:14px;color:var(--muted)}
+select{font:500 17px Figtree,sans-serif;padding:13px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+button{font:700 17px Figtree,sans-serif;padding:14px 26px;border:0;border-radius:10px;background:var(--ticket);color:#2A0F52;cursor:pointer}
+button:hover{filter:brightness(1.06)}
+.results{margin-top:20px}
+.summary{font-weight:600;margin:0 0 10px}
+.times{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px}
+.t{flex:0 0 auto;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;min-width:112px;background:var(--bg)}
+.t b{font:700 22px "Bricolage Grotesque",sans-serif;display:block}
+.t span{font-size:13px;color:var(--muted)}
+.note{color:var(--muted);font-size:14px;margin:10px 0 0}
+section{padding:84px 0 0}
+h2{font-size:clamp(30px,5vw,46px);font-weight:800;max-width:16ch}
+.lead{color:var(--muted);max-width:52ch;margin:14px 0 0}
+.route{list-style:none;margin:34px 0 0;padding:0 0 0 30px;position:relative;max-width:620px}
+.route:before{content:"";position:absolute;left:9px;top:10px;bottom:10px;width:6px;border-radius:3px;background:var(--violet)}
+.route li{position:relative;display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--line)}
+.route li:before{content:"";position:absolute;left:-30px;top:14px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:4px solid var(--violet)}
+.route li.hub:before{background:var(--ticket);border-color:var(--deep)}
+.route li.hub strong{font-size:19px}
+.route small{color:var(--muted);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:34px 28px;margin-top:36px}
+.grid h3{font-size:21px;margin-bottom:6px}
+.grid p{margin:0;color:var(--muted)}
+.mark{display:block;width:44px;height:6px;border-radius:3px;background:var(--violet);margin-bottom:14px}
+.train{background:var(--deep);color:#fff;border-radius:22px;padding:34px;margin-top:36px;display:grid;grid-template-columns:1.2fr 1fr;gap:30px}
+@media(max-width:760px){.train{grid-template-columns:1fr}}
+.train svg{width:100%;height:auto}
+dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:18px 14px}
+dt{font-size:14px;color:#BFA9EE}dd{margin:0;font:700 26px "Bricolage Grotesque",sans-serif}
+.soon{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px}.card h3{font-size:22px;margin-bottom:8px}.card p{margin:0 0 16px;color:var(--muted)}.card span{display:inline-block;background:var(--ticket);color:#2A0F52;font-weight:700;font-size:14px;padding:4px 12px;border-radius:99px}
+.page{padding-top:40px;min-height:70vh}.back{display:inline-block;margin-bottom:22px;font-weight:600;color:var(--violet)}.list{margin-top:26px;display:grid;gap:10px;max-width:640px}.row{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:center;text-decoration:none;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}.row:hover{border-color:var(--violet)}.row b{font:700 26px "Bricolage Grotesque",sans-serif}.row span{color:var(--muted)}.row em{font-style:normal;font-weight:700;background:var(--ticket);color:#2A0F52;padding:8px 16px;border-radius:99px}
+footer{margin-top:90px;background:var(--deep);color:#D9C9F7;padding:44px 0 calc(44px + env(safe-area-inset-bottom,0px));font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer .logo{color:#fff}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<clipPath id="cx"><rect x="30" y="0" width="20" height="29"/></clipPath>
+<symbol id="mark" viewBox="0 0 80 58">
+<circle cx="28" cy="29" r="19" fill="none" stroke="#6A2BD9" stroke-width="9"/>
+<circle cx="52" cy="29" r="19" fill="none" stroke="var(--gap)" stroke-width="15"/>
+<circle cx="52" cy="29" r="19" fill="none" stroke="#B48CFF" stroke-width="9"/>
+<g clip-path="url(#cx)"><circle cx="28" cy="29" r="19" fill="none" stroke="var(--gap)" stroke-width="15"/><circle cx="28" cy="29" r="19" fill="none" stroke="#6A2BD9" stroke-width="9"/></g>
+</symbol>
+</defs>
+</svg>
+
+<header>
+<div class="wrap">
+<a class="logo" href="#top" aria-label="Purplelink home"><svg aria-hidden="true"><use href="#mark"/></svg>Purplelink</a>
+<nav aria-label="Main"><a href="#plan">Plan</a><a href="#route">Route</a><a href="#onboard">On board</a><a href="#trains">Our trains</a></nav>
+</div>
+</header>
+
+<main id="top">
+<div id="v-home">
+<div class="hero">
+<div class="wrap">
+<h1>London to Manchester for less.</h1>
+<p>Direct trains every hour, with a seat, a socket and space for your bags.</p>
+</div>
+<svg class="rails" viewBox="0 0 640 120" fill="none" aria-hidden="true"><path d="M0 100C160 100 220 30 360 30S560 10 640 10" stroke="#6A2BD9" stroke-width="10"/><path d="M0 116C170 116 235 50 372 50S565 30 640 30" stroke="#B48CFF" stroke-width="10"/></svg>
+</div>
+
+<div class="wrap">
+<div class="planner" id="plan">
+<div class="fields">
+<label>From<select id="from"></select></label>
+<label>To<select id="to"></select></label>
+<button id="go" type="button">Find trains</button>
+</div>
+</div>
+</div>
+
+<section id="soon"><div class="wrap"><div class="soon">
+<div class="card"><h3>Full timetable</h3><p>Our complete timetable is coming soon.</p><span>Coming soon</span></div>
+<div class="card"><h3>Fares</h3><p>Fares are coming soon, and we are aiming to keep them low.</p><span>Coming soon</span></div>
+<div class="card"><h3>Purplelink app</h3><p>Tickets and live times in your pocket. The app is coming soon.</p><span>Coming soon</span></div>
+</div></div></section>
+
+<section id="route"><div class="wrap">
+<h2>One line, ten stops</h2>
+<p class="lead">Journey times are from Baker Street on a typical service. Gold stops are our main interchanges.</p>
+<ol class="route" id="routeList"></ol>
+</div></section>
+
+<section id="onboard"><div class="wrap">
+<h2>Made for the journey</h2>
+<p class="lead">Every carriage is designed around what people actually do on a long train ride.</p>
+<div class="grid">
+<div><span class="mark"></span><h3>Space for luggage</h3><p>Overhead racks and room for bags, so aisles stay clear.</p></div>
+<div><span class="mark"></span><h3>Easy to board</h3><p>Handrails and grab rails beside every door, with wide sliding doors.</p></div>
+<div><span class="mark"></span><h3>Power within reach</h3><p>Charging ports at hand height, not hidden under the seat.</p></div>
+<div><span class="mark"></span><h3>Seats that fit your trip</h3><p>Rows of two, single pairs, and 2+2 facing seats with fold-down tables.</p></div>
+</div>
+</div></section>
+
+<section id="trains"><div class="wrap">
+<h2>Our trains</h2>
+<p class="lead">Four-car electric trains, built for fast intercity running.</p>
+<div class="train">
+<svg viewBox="0 0 460 120" role="img" aria-label="Side view of a four-car Purplelink train">
+<g fill="#6A2BD9"><rect x="6" y="30" width="108" height="56" rx="10"/><rect x="118" y="30" width="108" height="56" rx="6"/><rect x="230" y="30" width="108" height="56" rx="6"/><rect x="342" y="30" width="112" height="56" rx="10"/></g>
+<g fill="#D9C9F7"><rect x="18" y="40" width="20" height="18" rx="3"/><rect x="48" y="40" width="20" height="18" rx="3"/><rect x="78" y="40" width="20" height="18" rx="3"/><rect x="130" y="40" width="20" height="18" rx="3"/><rect x="160" y="40" width="20" height="18" rx="3"/><rect x="190" y="40" width="20" height="18" rx="3"/><rect x="242" y="40" width="20" height="18" rx="3"/><rect x="272" y="40" width="20" height="18" rx="3"/><rect x="302" y="40" width="20" height="18" rx="3"/><rect x="354" y="40" width="20" height="18" rx="3"/><rect x="384" y="40" width="20" height="18" rx="3"/><rect x="414" y="40" width="28" height="18" rx="3"/></g>
+<rect x="6" y="70" width="448" height="6" fill="#FFC83D"/>
+<path d="M0 104H460" stroke="#B48CFF" stroke-width="5"/><path d="M0 114H460" stroke="#B48CFF" stroke-width="5" opacity=".5"/>
+</svg>
+<dl>
+<div><dt>Top speed</dt><dd>100 mph</dd></div>
+<div><dt>Carriages</dt><dd>4 per train</dd></div>
+<div><dt>Seats</dt><dd>230</dd></div>
+<div><dt>Power</dt><dd>25kV AC / 750V DC</dd></div>
+<div><dt>Doors</dt><dd>4 per carriage</dd></div>
+<div><dt>Toilets</dt><dd>Accessible, on board</dd></div>
+</dl>
+</div>
+</div></section>
+</div>
+<div id="v-results" hidden><div class="wrap page">
+<a class="back" href="#home">Back to home</a>
+<h2 id="rtitle"></h2>
+<p class="lead" id="rsub"></p>
+<div class="list" id="out"></div>
+</div></div>
+<div id="v-fares" hidden><div class="wrap page">
+<a class="back" href="#results">Back to times</a>
+<h2>Fare prices coming soon</h2>
+<p class="lead" id="fsub"></p>
+<p class="lead">We are still setting our lower fares. Please check back soon.</p>
+</div></div>
+</main>
+
+<footer><div class="wrap">
+<a class="logo" href="#top"><svg aria-hidden="true" style="--gap:#2A0F52"><use href="#mark"/></svg>Purplelink</a>
+<span>Designed by WAGN</span>
+</div></footer>
+
+<script>
+const S=[["London Baker Street",0,1],["Amersham",45,0],["Milton Keynes Central",105,1],["Northampton",123,0],["Rugby",147,0],["Birmingham International",176,1],["Tame Bridge Parkway",193,0],["Wolverhampton",212,1],["Stockport",273,0],["Manchester Piccadilly",283,1]];
+const FIRST=6*60+28,COUNT=16;
+const fmt=m=>{m%=1440;return String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0")};
+const dur=m=>Math.floor(m/60)+"h "+String(m%60).padStart(2,"0")+"m";
+const f=document.getElementById("from"),t=document.getElementById("to"),out=document.getElementById("out");
+S.forEach((s,i)=>{f.add(new Option(s[0],i));t.add(new Option(s[0],i))});
+f.value=0;t.value=9;
+let sel=[0,9],pick="";
+function render(){
+const a=sel[0],b=sel[1],d=S[b][1]-S[a][1];
+document.getElementById("rtitle").textContent=S[a][0]+" to "+S[b][0];
+if(a>=b){document.getElementById("rsub").textContent="Choose two different stations, heading towards Manchester. The return timetable is coming soon.";out.innerHTML="";return}
+document.getElementById("rsub").textContent=dur(d)+" · every hour · choose your train";
+out.innerHTML=Array.from({length:COUNT},(_,i)=>{const dep=FIRST+i*60+S[a][1];return '<a class="row" href="#fares" data-t="'+fmt(dep)+'"><b>'+fmt(dep)+'</b><span>arrives '+fmt(dep+d)+'</span><em>Select</em></a>'}).join("");
+}
+out.addEventListener("click",e=>{const r=e.target.closest(".row");if(r)document.getElementById("fsub").textContent="Your train: "+r.dataset.t+" from "+S[sel[0]][0]+" to "+S[sel[1]][0]+"."});
+function router(){
+const h=location.hash.slice(1),v=(h==="results"||h==="fares")?h:"home";
+["home","results","fares"].forEach(x=>document.getElementById("v-"+x).hidden=x!==v);
+if(v==="results")render();
+const el=v==="home"?document.getElementById(h):null;
+if(el)el.scrollIntoView();else window.scrollTo(0,0);
+}
+document.getElementById("go").onclick=()=>{sel=[+f.value,+t.value];if(location.hash==="#results")router();else location.hash="results"};
+window.addEventListener("hashchange",router);router();
+document.getElementById("routeList").innerHTML=S.map(s=>'<li class="'+(s[2]?"hub":"")+'"><strong>'+s[0]+'</strong><small>'+(s[1]?dur(s[1]):"Start")+'</small></li>').join("");
+</script>
+</body>
+</html>
